@@ -24,7 +24,7 @@ namespace ITube
 		private static IEnumerable<string> GetChannels()
 		{
 			string[] listChannels;
-			using (StreamReader stream = new("List GetChannels.csv", Encoding.UTF8))
+			using (StreamReader stream = new("List Channels.csv", Encoding.UTF8))
 				listChannels = stream.ReadToEnd().Split(';');
 			return listChannels;
 		} 
