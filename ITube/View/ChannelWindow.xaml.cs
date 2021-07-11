@@ -17,7 +17,7 @@ namespace ITube
 
 		private void Control_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
-			var s = (Label)sender;
+			Label s = (Label)sender;
 			MainWindow window = new(s.Content.ToString());
 			window.Show();
 			Close();

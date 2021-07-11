@@ -8,32 +8,34 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
-
+ 
 namespace ITube
 {
 	public class AppViewModel : INotifyPropertyChanged
 	{
 		public ObservableCollection<Video> Videos { get; set; }
-		private static string _chennel;
-		public AppViewModel(string chennel)
+		private static string _channel;
+
+		public AppViewModel(string channel)
 		{
-			_chennel = chennel;
+			_channel = channel;
 			Videos = new ObservableCollection<Video>(GetVideos());
 		}
 
 		private static IEnumerable<Video> GetVideos()
 		{
-			var config = Configuration.Default.WithDefaultLoader();
-			var address = _chennel;
+			IConfiguration config = Configuration.Default.WithDefaultLoader();
+			string address = _channel;
 			var document = BrowsingContext.New(config).OpenAsync(address);
 			const string cellSelector = @"html body div div div div div a";
-			var elements = document.Result.QuerySelectorAll(cellSelector).Where(x => x.ParentElement.ParentElement.Attributes["class"].Value == "pure-u-1 pure-u-md-1-4");
-			List<Video> list = new();
-			foreach (var i in elements)
-			{
-				list.Add(new Video(i.Children[1].TextContent, i.Attributes["href"].Value, $"https://invidious.namazso.eu{i.Children[0].Children[0].Attributes["src"].Value}", i.Children[0].Children[1].TextContent));
-			}
-			return list;
+
+			var elements = document.Result.QuerySelectorAll(cellSelector).Where(x =>
+				x.ParentElement.ParentElement.Attributes["class"].Value == "pure-u-1 pure-u-md-1-4");
+
+			return elements.Select(element => new Video(element.Children[1].TextContent,
+				element.Attributes["href"].Value,
+				$"https://invidious.namazso.eu{element.Children[0].Children[0].Attributes["src"].Value}",
+				element.Children[0].Children[1].TextContent)).ToList();
 		}
 
 		public static void WatchVideo(string url)
@@ -50,6 +52,5 @@ namespace ITube
 		public event PropertyChangedEventHandler PropertyChanged;
 		private void OnPropertyChanged([CallerMemberName] string prop = "") =>
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-
 	}
 }

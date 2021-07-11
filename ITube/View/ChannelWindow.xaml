@@ -11,7 +11,7 @@
 			<ColumnDefinition Width="27*"/>
 			<ColumnDefinition Width="373*"/>
 		</Grid.ColumnDefinitions>
-		<ListBox Name="lbMain" Grid.Column="1" ItemsSource="{Binding Channels}">
+		<ListBox Grid.Column="1" ItemsSource="{Binding Channels}">
 		    <ListBox.ItemTemplate>
 			    <DataTemplate>
 				    <Grid>
