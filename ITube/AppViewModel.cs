@@ -1,40 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AngleSharp;
+
 using ITube.Model;
 
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Net.Http;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using AngleSharp;
-using AngleSharp.Browser;
-using AngleSharp.Html.Parser;
 
 namespace ITube
 {
 	public class AppViewModel : INotifyPropertyChanged
 	{
 		public ObservableCollection<Video> Videos { get; set; }
-
-		public AppViewModel()
+		private static string _chennel;
+		public AppViewModel(string chennel)
 		{
-			Videos = new ObservableCollection<Video>(GetVideosAsync());
+			_chennel = chennel;
+			Videos = new ObservableCollection<Video>(GetVideos());
 		}
 
-		private static IEnumerable<Video> GetVideosAsync()
+		private static IEnumerable<Video> GetVideos()
 		{
 			var config = Configuration.Default.WithDefaultLoader();
-			var address = "https://invidious.namazso.eu/channel/UCZ26MoNJKaGXFQWKuGVzmAg";
+			var address = _chennel;
 			var document = BrowsingContext.New(config).OpenAsync(address);
-			var cellSelector = @"html body div div div div div a";
-			var cell = document.Result.QuerySelectorAll(cellSelector).Where(x => x.ParentElement.ParentElement.Attributes["class"].Value == "pure-u-1 pure-u-md-1-4");
+			const string cellSelector = @"html body div div div div div a";
+			var elements = document.Result.QuerySelectorAll(cellSelector).Where(x => x.ParentElement.ParentElement.Attributes["class"].Value == "pure-u-1 pure-u-md-1-4");
 			List<Video> list = new();
-			foreach (var i in cell)
+			foreach (var i in elements)
 			{
-				list.Add(new Video("sad", i.Attributes["href"].Value));
+				list.Add(new Video(i.Children[1].TextContent, i.Attributes["href"].Value, $"https://invidious.namazso.eu{i.Children[0].Children[0].Attributes["src"].Value}", i.Children[0].Children[1].TextContent));
 			}
 			return list;
 		}

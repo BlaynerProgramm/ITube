@@ -21,10 +21,10 @@ namespace ITube
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		public MainWindow()
+		public MainWindow(string channel)
 		{
 			InitializeComponent();
-			DataContext = new AppViewModel();
+			DataContext = new AppViewModel(channel);
 		}
 
 		private void Control_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)

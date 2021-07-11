@@ -26,9 +26,10 @@
 							<RowDefinition Height="auto"/>
 						</Grid.RowDefinitions>
 						<Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" BorderThickness="2">
-							<Image Source=""/>
+							<Image Source="{Binding Image}"/>
 						</Border>
-						<Label Content="{Binding Name}" Grid.Row="0" Grid.Column="1" Margin="10,1,1,1">
+						<Label Content="{Binding Time}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="DarkGray" Grid.Column="0" Grid.RowSpan="4"/>
+						<Label Content="{Binding Name}" FontStyle="Oblique" FontStretch="Condensed" Grid.Row="0" Grid.Column="1" Margin="10,1,1,1">
 							<Label.ToolTip>
 								<StackPanel Orientation="Vertical">
 									<TextBlock Text=""/>
