@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using ITube.View;
 
 namespace ITube
 {
@@ -21,6 +22,13 @@ namespace ITube
 			MainWindow window = new(s.Content.ToString());
 			window.Show();
 			Close();
+		}
+
+		private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+		{
+			AddChannel window = new();
+			window.ShowDialog();
+			DataContext = new ChannelViewModel();
 		}
 	}
 }

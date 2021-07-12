@@ -6,40 +6,42 @@
         xmlns:local="clr-namespace:ITube" d:DataContext="{d:DesignInstance Type=local:ChannelViewModel}"
 		mc:Ignorable="d"
         Title="ChannelWindow" Height="450" Width="800">
-    <Grid>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="27*"/>
-			<ColumnDefinition Width="373*"/>
-		</Grid.ColumnDefinitions>
-		<ListBox Grid.Column="1" ItemsSource="{Binding Channels}">
-		    <ListBox.ItemTemplate>
-			    <DataTemplate>
-				    <Grid>
-					    <Grid.ColumnDefinitions>
-						    <ColumnDefinition Width="100"/>
-						    <ColumnDefinition/>
-					    </Grid.ColumnDefinitions>
-					    <Grid.RowDefinitions>
-						    <RowDefinition Height="auto"/>
-						    <RowDefinition Height="auto"/>
-						    <RowDefinition Height="auto"/>
-						    <RowDefinition Height="auto"/>
-					    </Grid.RowDefinitions>
-					    <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" BorderThickness="2">
-						    <Image Source=""/>
-					    </Border>
-						<Label Content="{Binding Url}" Grid.Row="0" Grid.Column="1" Margin="10,1,1,1" MouseDoubleClick="Control_OnMouseDoubleClick">
-						    <Label.ToolTip>
-							    <StackPanel Orientation="Vertical">
-								    <TextBlock Text=""/>
-								    <TextBlock Text=""/>
-								    <TextBlock Text=""/>
-							    </StackPanel>
-						    </Label.ToolTip>
-					    </Label>
-				    </Grid>
-			    </DataTemplate>
-		    </ListBox.ItemTemplate>
-	    </ListBox>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="381*"/>
+			<RowDefinition Height="53*"/>
+		</Grid.RowDefinitions>
+		<Button Grid.Row="1" Grid.Column="0" Width="100" Content="+" Click="ButtonBase_OnClick"/>
+		<ListBox ItemsSource="{Binding Channels}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="100"/>
+							<ColumnDefinition/>
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+						</Grid.RowDefinitions>
+						<Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" BorderThickness="2">
+							<Image Source="{Binding Image}"/>
+						</Border>
+						<Label Content="{Binding Name}" Grid.Row="0" Grid.Column="1" Margin="10,1,1,1">
+							<Label.ToolTip>
+								<StackPanel Orientation="Vertical">
+									<TextBlock Text="{Binding Subscribe}"/>
+									<TextBlock Text=""/>
+									<TextBlock Text=""/>
+								</StackPanel>
+							</Label.ToolTip>
+						</Label>
+						<Label Content="{Binding Url}" Grid.Row="1" Grid.Column="1" Margin="10,1,1,1" MouseDoubleClick="Control_OnMouseDoubleClick"/>
+					</Grid>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
 	</Grid>
 </Window>

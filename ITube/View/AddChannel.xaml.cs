@@ -10,33 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ITube.Model;
 
-namespace ITube
+namespace ITube.View
 {
 	/// <summary>
-	/// Interaction logic for MainWindow.xaml
+	/// Interaction logic for AddChannel.xaml
 	/// </summary>
-	public partial class MainWindow : Window
+	public partial class AddChannel : Window
 	{
-		public MainWindow(string channel)
+		public AddChannel()
 		{
 			InitializeComponent();
-			DataContext = new AppViewModel(channel);
-		}
-
-		private void Control_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
-		{
-			var s = (Label) sender;
-			Video.WatchVideo(s.Content.ToString());
 		}
 
 		private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
 		{
-			ChannelWindow window = new();
-			window.Show();
+			Channel.AddChannel(tbUrl.Text);
 			Close();
 		}
 	}
