@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using ITube.Model;
 using ITube.View;
 
 namespace ITube
@@ -16,19 +17,19 @@ namespace ITube
 			DataContext = new ChannelViewModel();
 		}
 
-		private void Control_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
-		{
-			Label s = (Label)sender;
-			MainWindow window = new(s.Content.ToString());
-			window.Show();
-			Close();
-		}
-
 		private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
 		{
 			AddChannel window = new();
 			window.ShowDialog();
 			DataContext = new ChannelViewModel();
+		}
+
+		private void Selector_OnSelected(object sender, RoutedEventArgs e)
+		{
+			var s = (ListBox) sender;
+			MainWindow window = new((Channel)s.SelectedItem); 
+			window.Show();
+			Close();
 		}
 	}
 }

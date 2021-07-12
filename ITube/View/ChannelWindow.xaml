@@ -12,7 +12,7 @@
 			<RowDefinition Height="53*"/>
 		</Grid.RowDefinitions>
 		<Button Grid.Row="1" Grid.Column="0" Width="100" Content="+" Click="ButtonBase_OnClick"/>
-		<ListBox ItemsSource="{Binding Channels}">
+		<ListBox ItemsSource="{Binding Channels}" MouseDoubleClick="Selector_OnSelected">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
 					<Grid>
@@ -38,7 +38,7 @@
 								</StackPanel>
 							</Label.ToolTip>
 						</Label>
-						<Label Content="{Binding Url}" Grid.Row="1" Grid.Column="1" Margin="10,1,1,1" MouseDoubleClick="Control_OnMouseDoubleClick"/>
+						<Label Content="{Binding Url}" Grid.Row="1" Grid.Column="1" Margin="10,1,1,1"/>
 					</Grid>
 				</DataTemplate>
 			</ListBox.ItemTemplate>
