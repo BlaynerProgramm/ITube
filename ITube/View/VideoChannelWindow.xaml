@@ -8,11 +8,11 @@
         Title="MainWindow" Height="450" Width="800">
 	<Grid>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="27*"/>
-			<ColumnDefinition Width="373*"/>
+			<ColumnDefinition Width="100"/>
+			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
-		<Button Grid.Column="0" Content="Back" Height="100" Click="ButtonBase_OnClick"/>
-		<ListBox Grid.Column="1" ItemsSource="{Binding Videos}">
+		<Button Grid.Column ="0"  Content="Back" Height="100" Click="ButtonBase_OnClick"/>
+		<ListBox Grid.Column ="1"  ItemsSource="{Binding Videos}" >
 			<ListBox.ItemTemplate>
 				<DataTemplate>
 					<Grid>

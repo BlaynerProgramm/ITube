@@ -1,8 +1,8 @@
 ﻿using AngleSharp;
 
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Text.Json;
 
@@ -11,12 +11,48 @@ namespace ITube.Model
 	/// <summary>
 	/// Канал
 	/// </summary>
-	public class Channel
+	public class Channel : INotifyPropertyChanged
 	{
-		public string Name { get; init; }
-		public string Image { get; set; }
-		public string Subscribe { get; set; }
-		public string Url { get; init; }
+		string _name;
+		string _image;
+		string _subscribe;
+		string _url;
+		public string Name
+		{
+			get => _name;
+			set
+			{
+				_name = value;
+				OnPropertyChanged("Name");
+			}
+		}
+		public string Image
+		{
+			get => _image;
+			set
+			{
+				_image = value;
+				OnPropertyChanged("Image");
+			}
+		}
+		public string Subscribe
+		{
+			get => _subscribe;
+			set
+			{
+				_subscribe = value;
+				OnPropertyChanged("Subscribe");
+			}
+		}
+		public string Url
+		{
+			get => _url;
+			set
+			{
+				_url = value;
+				OnPropertyChanged("Url");
+			}
+		}
 
 		public Channel(string url, string image, string subscribe ,string name)
 		{
@@ -47,5 +83,9 @@ namespace ITube.Model
 			using StreamWriter stream = new("List Channels.json", false, Encoding.UTF8);
 			stream.Write(JsonSerializer.Serialize(allChannel));
 		}
+
+		public event PropertyChangedEventHandler PropertyChanged;
+		private void OnPropertyChanged(string propertyName) =>
+	PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 	}
 }

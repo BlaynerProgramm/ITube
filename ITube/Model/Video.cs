@@ -59,7 +59,8 @@ namespace ITube.Model
 			cmd.StartInfo.UseShellExecute = false;
 			cmd.Start();
 			cmd.StandardInput.WriteLine($"vlc https://youtube.com{url}");
-			cmd.WaitForExit();
+			cmd.CloseMainWindow();
+			cmd.Dispose();
 		}
 	}
 }

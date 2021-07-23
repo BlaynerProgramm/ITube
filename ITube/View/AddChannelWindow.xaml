@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ITube.View"
         mc:Ignorable="d"
-        Title="AddChannel" Height="200" Width="400">
+        Title="AddChannel" Height="94" Width="425">
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="81*"/>
 			<ColumnDefinition Width="241*"/>
 			<ColumnDefinition Width="78*"/>
 		</Grid.ColumnDefinitions>
-<StackPanel Grid.Column="1">
-	<Label Content="Введи ссылку на канал"/>
+		<StackPanel Grid.Column="1">
+			<Label Content="Введи ссылку на канал без youtube.com"/>
 			<TextBox Name ="tbUrl"/>
-	<Button Content="+" Click="ButtonBase_OnClick"></Button>
+			<Button Content="Добавить" Click="ButtonBase_OnClick"/>
 		</StackPanel>
 	</Grid>
 </Window>

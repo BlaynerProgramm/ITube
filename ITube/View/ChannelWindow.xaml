@@ -11,7 +11,7 @@
 			<RowDefinition Height="381*"/>
 			<RowDefinition Height="53*"/>
 		</Grid.RowDefinitions>
-		<Button Grid.Row="1" Grid.Column="0" Width="100" Content="+" Click="ButtonBase_OnClick"/>
+		<Button Grid.Row="1" Grid.Column="0" Width="100" Content="Добавить каннал" Command="{Binding Path=AddChannel}"/>
 		<ListBox ItemsSource="{Binding Channels}" MouseDoubleClick="Selector_OnSelected">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
