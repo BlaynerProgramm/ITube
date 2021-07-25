@@ -5,13 +5,13 @@ namespace ITube.Model
 {
 	public class DelegateCommand : ICommand
 	{
-		private Action<object> execute;
-		private Func<object, bool> canExecute;
+		private readonly Action<object> _execute;
+		private readonly Func<object, bool> _canExecute;
 
 		public DelegateCommand(Action<object> execute, Func<object, bool> canExecute = null)
 		{
-			this.execute = execute;
-			this.canExecute = canExecute;
+			_execute = execute;
+			_canExecute = canExecute;
 		}
 
 		public event EventHandler CanExecuteChanged
@@ -20,7 +20,7 @@ namespace ITube.Model
 			remove { CommandManager.RequerySuggested -= value; }
 		}
 
-		public bool CanExecute(object parameter) => canExecute == null || canExecute(parameter);
-		public void Execute(object parameter) => execute?.Invoke(parameter);
+		public bool CanExecute(object parameter) => _canExecute == null || _canExecute(parameter);
+		public void Execute(object parameter) => _execute?.Invoke(parameter);
 	}
 }

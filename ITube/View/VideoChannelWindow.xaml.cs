@@ -19,12 +19,12 @@ namespace ITube
 			DataContext = new AppViewModel(channel.Url);
 		}
 
-		private void Control_OnMouseDoubleClick(object sender, MouseButtonEventArgs e) => 
+		private void Control_OnMouseDoubleClick(object sender, MouseButtonEventArgs e) =>
 			AppViewModel.OpenVideo((sender as Label).Content);
 
 		private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
 		{
-			ChannelWindow window = new();
+			View.ChannelWindow window = new();
 			window.Show();
 			Close();
 		}

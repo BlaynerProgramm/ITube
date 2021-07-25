@@ -24,7 +24,7 @@ namespace ITube.Model
 			}
 			else
 			{
-				throw new ArgumentNullException();
+				throw new ArgumentNullException(nameof(Video));
 			}
 		}
 
@@ -53,16 +53,19 @@ namespace ITube.Model
 		/// <param name="url">Ссылка на видео</param>
 		public static void WatchVideo(string url)
 		{
-			Process cmd = new();
-			cmd.StartInfo.FileName = "cmd.exe";
-			cmd.StartInfo.RedirectStandardInput = true;
-			cmd.StartInfo.UseShellExecute = false;
-			cmd.Start();
+			Process cmd;
+			bool StartCmd()
+			{
+				cmd = new();
+				cmd.StartInfo.FileName = "cmd.exe";
+				cmd.StartInfo.RedirectStandardInput = true;
+				cmd.StartInfo.UseShellExecute = false;
+				return cmd.Start();
+			}
+
+			if (!StartCmd()) return;
 			cmd.StandardInput.WriteLine($"vlc https://youtube.com{url}");
 			cmd.CloseMainWindow();
-			//cmd.Kill();
-			cmd.Close();
-			cmd.Dispose();
 		}
 	}
 }

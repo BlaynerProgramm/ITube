@@ -13,17 +13,18 @@ namespace ITube.Model
 	/// </summary>
 	public class Channel : INotifyPropertyChanged
 	{
-		string _name;
-		string _image;
-		string _subscribe;
-		string _url;
+		#region Переменные
+		private string _name;
+		private string _image;
+		private string _subscribe;
+		private string _url;
 		public string Name
 		{
 			get => _name;
 			set
 			{
 				_name = value;
-				OnPropertyChanged("Name");
+				OnPropertyChanged(nameof(Name));
 			}
 		}
 		public string Image
@@ -32,7 +33,7 @@ namespace ITube.Model
 			set
 			{
 				_image = value;
-				OnPropertyChanged("Image");
+				OnPropertyChanged(nameof(Image));
 			}
 		}
 		public string Subscribe
@@ -41,7 +42,7 @@ namespace ITube.Model
 			set
 			{
 				_subscribe = value;
-				OnPropertyChanged("Subscribe");
+				OnPropertyChanged(nameof(Subscribe));
 			}
 		}
 		public string Url
@@ -50,9 +51,10 @@ namespace ITube.Model
 			set
 			{
 				_url = value;
-				OnPropertyChanged("Url");
+				OnPropertyChanged(nameof(Url));
 			}
 		}
+		#endregion
 
 		public Channel(string url, string image, string subscribe ,string name)
 		{
@@ -64,10 +66,9 @@ namespace ITube.Model
 
 		public static IEnumerable<Channel> GetChannels()
 		{
-			string json;
-			using (StreamReader stream = new("List Channels.json", Encoding.UTF8))
-				json = stream.ReadToEnd();
-			return JsonSerializer.Deserialize<List<Channel>>(json); ;
+			using StreamReader stream = new("List Channels.json", Encoding.UTF8);
+			var json = stream.ReadToEnd();
+			return JsonSerializer.Deserialize<List<Channel>>(json);
 		}
 
 		public static void AddChannel(string url)
@@ -86,6 +87,6 @@ namespace ITube.Model
 
 		public event PropertyChangedEventHandler PropertyChanged;
 		private void OnPropertyChanged(string propertyName) =>
-	PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 	}
 }

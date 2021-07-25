@@ -1,9 +1,9 @@
-﻿<Window x:Class="ITube.ChannelWindow"
+﻿<Window x:Class="ITube.View.ChannelWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ITube" 
+        xmlns:local="clr-namespace:ITube"
 		xmlns:modelview="clr-namespace:ITube.ModelView" d:DataContext="{d:DesignInstance Type=modelview:ChannelViewModel}"
 		mc:Ignorable="d"
         Title="Список избранных каналов" Height="450" Width="800">
@@ -16,7 +16,7 @@
 			<RowDefinition Height="53*"/>
 		</Grid.RowDefinitions>
 		<Button Grid.Row="1" Grid.Column="0" Width="100" Content="Добавить каннал" Command="{Binding Path=AddChannel}"/>
-		<ListBox ItemsSource="{Binding Channels}" MouseDoubleClick="Selector_OnSelected">
+		<ListBox Grid.Row="0" ItemsSource="{Binding Channels}" MouseDoubleClick="Selector_OnSelected">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
 					<Grid>
@@ -30,7 +30,7 @@
 							<RowDefinition Height="auto"/>
 							<RowDefinition Height="auto"/>
 						</Grid.RowDefinitions>
-						<Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" BorderThickness="2">
+						<Border Grid.Row="0" Grid.Column="0" BorderThickness="2">
 							<Image Source="{Binding Image}"/>
 						</Border>
 						<Label Content="{Binding Name}" Grid.Row="0" Grid.Column="1" Margin="10,1,1,1">

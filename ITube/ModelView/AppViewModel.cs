@@ -1,13 +1,12 @@
 ﻿using ITube.Model;
 
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 
 namespace ITube.ModelView
 {
-	public class AppViewModel : INotifyPropertyChanged
+	public class AppViewModel
 	{
-		public ObservableCollection<Video> Videos { get; set; }
+		public ObservableCollection<Video> Videos { get; init; }
 
 		public AppViewModel(string channel)
 		{
@@ -15,7 +14,5 @@ namespace ITube.ModelView
 		}
 
 		public static void OpenVideo(object url) => Video.WatchVideo((string)url);
-
-		public event PropertyChangedEventHandler PropertyChanged;
 	}
 }
