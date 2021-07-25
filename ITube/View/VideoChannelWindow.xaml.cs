@@ -1,7 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+
 using ITube.Model;
+using ITube.ModelView;
 
 namespace ITube
 {

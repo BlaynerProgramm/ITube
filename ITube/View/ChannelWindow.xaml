@@ -3,9 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ITube" d:DataContext="{d:DesignInstance Type=local:ChannelViewModel}"
+        xmlns:local="clr-namespace:ITube" 
+		xmlns:modelview="clr-namespace:ITube.ModelView" d:DataContext="{d:DesignInstance Type=modelview:ChannelViewModel}"
 		mc:Ignorable="d"
-        Title="ChannelWindow" Height="450" Width="800">
+        Title="Список избранных каналов" Height="450" Width="800">
+	<Window.DataContext>
+		<modelview:ChannelViewModel/>
+	</Window.DataContext>
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="381*"/>

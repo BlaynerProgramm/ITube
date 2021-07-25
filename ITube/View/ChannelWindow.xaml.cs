@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using ITube.Model;
+using ITube.ModelView;
 using ITube.View;
 
 namespace ITube
@@ -13,7 +14,6 @@ namespace ITube
 		public ChannelWindow()
 		{
 			InitializeComponent();
-			DataContext = new ChannelViewModel();
 		}
 
 		private void ButtonBase_OnClick(object sender, RoutedEventArgs e)

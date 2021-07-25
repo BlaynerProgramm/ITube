@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 
-namespace ITube
+namespace ITube.ModelView
 {
 	public class ChannelViewModel : INotifyPropertyChanged
 	{
@@ -16,12 +16,12 @@ namespace ITube
 
 		public ICommand AddChannel
 		{
-			get => new DelegateCommand(x => 
+			get => new DelegateCommand(x =>
 			{
 				new View.AddChannel().ShowDialog();
 				//OnPropertyChanged("Channels");
 			});
-			
+
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
