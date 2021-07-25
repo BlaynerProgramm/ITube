@@ -14,7 +14,7 @@ namespace ITube.View
 		private void Selector_OnSelected(object sender, RoutedEventArgs e)
 		{
 			var s = (ListBox)sender;
-			MainWindow window = new((Channel)s.SelectedItem); 
+			VideoChannelWindow window = new((Channel)s.SelectedItem); 
 			window.Show();
 			Close();
 		}

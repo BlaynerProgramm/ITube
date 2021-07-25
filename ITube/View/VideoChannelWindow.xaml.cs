@@ -5,17 +5,17 @@ using System.Windows.Input;
 using ITube.Model;
 using ITube.ModelView;
 
-namespace ITube
+namespace ITube.View
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : Window
+	public partial class VideoChannelWindow : Window
 	{
-		public MainWindow(Channel channel)
+		public VideoChannelWindow(Channel channel)
 		{
 			InitializeComponent();
-			Title = channel.Name;
+			Title = $"Все видео с каналла {channel.Name}";
 			DataContext = new AppViewModel(channel.Url);
 		}
 

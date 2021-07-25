@@ -15,7 +15,7 @@ namespace ITube.ModelView
 
 		public static ICommand AddChannel
 		{
-			get => new DelegateCommand(x => { new View.AddChannel().ShowDialog(); });
+			get => new DelegateCommand(x => new View.AddChannel().ShowDialog());
 		}
 	}
 }

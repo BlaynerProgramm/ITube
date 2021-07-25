@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ITube.View"
         mc:Ignorable="d"
-        Title="Добавить канал" Height="94" Width="425">
+        Title="Добавить канал" Height="110" Width="425">
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="81*"/>
